@@ -1,0 +1,85 @@
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Space between the cards */
+    padding: 20px; /* Padding around the card container */
+}
+
+.product-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 200px; /* Card width */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+h3 {
+    font-size: 1.4rem;
+    margin: 12px 0;
+    color: #333;
+}
+
+p {
+    font-size: 1rem;
+    color: #666;
+    margin: 6px 0;
+}
+
+.quantity-input {
+    margin: 12px 0;
+}
+
+.quantity-input label {
+    font-size: 0.9rem;
+    margin-right: 6px;
+    color: #555;
+}
+
+.quantity-input input {
+    width: 50px;
+    padding: 4px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+.quantity-input input:focus {
+    border-color: #80bdff;
+    outline: none;
+}
+
+.add-to-cart-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px; /* Adjusted padding for a smaller button */
+    border-radius: 5px;
+    font-size: 0.9rem; /* Slightly smaller font size */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.add-to-cart-btn:focus {
+    outline: none;
+}
