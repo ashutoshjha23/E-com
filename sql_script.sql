@@ -6,16 +6,15 @@ GRANT ALL PRIVILEGES ON ecommerce.* TO 'ecommerce'@'localhost';
 
 USE ecommerce;
 
--- Create customers table
 CREATE TABLE customers (
-    customer_id INT AUTO_INCREMENT PRIMARY KEY, -- Changed from id to customer_id
+    customer_id INT AUTO_INCREMENT PRIMARY KEY, 
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create products table
+
 CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -28,7 +27,7 @@ CREATE TABLE products (
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE 
 );
 
--- Create orders table
+
 CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT NOT NULL,
@@ -37,7 +36,7 @@ CREATE TABLE orders (
     total_price DECIMAL(10, 2) NOT NULL,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE -- Updated to reference customer_id
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE 
 );
 
 SELECT * FROM orders;
