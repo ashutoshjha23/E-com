@@ -1,4 +1,3 @@
-
 const db = require('../db');
 
 class Customer {
@@ -8,8 +7,17 @@ class Customer {
                 'INSERT INTO customers (name, email, password) VALUES (?, ?, ?)',
                 [name, email, password],
                 (err, results) => {
-                    if (err) reject(err);
-                    resolve(results.insertId);
+                    if (err) {
+                        console.error('Error executing INSERT query:', err);
+                        return reject(err);
+                    }
+                    
+                    if (results && results.insertId) {
+                        resolve(results.insertId);
+                    } else {
+                        console.error('No insertId found in results:', results);
+                        reject(new Error('Insert failed: insertId is missing'));
+                    }
                 }
             );
         });
@@ -21,7 +29,10 @@ class Customer {
                 'SELECT * FROM customers WHERE email = ?',
                 [email],
                 (err, results) => {
-                    if (err) reject(err);
+                    if (err) {
+                        console.error('Error executing SELECT query:', err);
+                        return reject(err);
+                    }
                     resolve(results[0]);
                 }
             );
