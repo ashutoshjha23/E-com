@@ -6,12 +6,11 @@ import RegisterProduct from './components/RegisterProduct';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import ProductPage from './components/ProductPage'; // Import the ProductPage component
+import ProductPage from './components/ProductPage'; 
 import { CartProvider } from './context/CartContext';
 import './styles.css';
 import { AuthProvider, useAuth } from './context/AuthContext';
 
-// Navbar Component
 const Navbar = () => {
     const { user, logout } = useAuth();
 
@@ -46,7 +45,6 @@ const Navbar = () => {
     );
 };
 
-// App Component
 const App = () => {
     return (
         <AuthProvider>
@@ -59,7 +57,7 @@ const App = () => {
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />
-                        <Route path="/product/:id" element={<ProductPage />} /> {/* Dynamic route for product details */}
+                        <Route path="/product/:id" element={<ProductPage />} /> {}
                     </Routes>
                 </Router>
             </CartProvider>

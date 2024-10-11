@@ -1,4 +1,3 @@
-// backend/routes/orderRoutes.js
 const express = require('express');
 const router = express.Router();
 const Order = require('../models/Order');
@@ -8,18 +7,14 @@ router.post('/addOrder', async (req, res) => {
     const { productId, customerId, quantity } = req.body;
 
     try {
-        // Fetch the product to get the price
         const product = await Product.findById(productId);
 
-        // Check if there's enough quantity
         if (product.quantity < quantity) {
             return res.status(400).json({ message: 'Insufficient quantity available.' });
         }
 
-        // Calculate total price
         const totalPrice = product.price * quantity;
 
-        // Create the order
         const orderId = await Order.create(productId, customerId, quantity, totalPrice);
 
         // Update the product quantity

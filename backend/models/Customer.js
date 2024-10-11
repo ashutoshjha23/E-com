@@ -1,4 +1,4 @@
-// backend/models/Customer.js
+
 const db = require('../db');
 
 class Customer {

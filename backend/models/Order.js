@@ -1,4 +1,4 @@
-// backend/models/Order.js
+
 const db = require('../db');
 
 class Order {

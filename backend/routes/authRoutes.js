@@ -1,11 +1,9 @@
-// backend/routes/authRoutes.js
 const express = require('express');
 const Customer = require('../models/Customer');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 
-// Signup
 router.post('/signup', async (req, res) => {
     const { name, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -17,7 +15,7 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-// Login
+
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const customer = await Customer.findByEmail(email);
