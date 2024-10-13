@@ -2,7 +2,6 @@ const express = require('express');
 const Product = require('../models/Product');
 const router = express.Router();
 
-// Create product
 router.post('/', async (req, res) => {
     const { name, description, price, quantity, imageUrl, customerId } = req.body;
     try {
@@ -13,7 +12,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// Get all products
 router.get('/', async (req, res) => {
     try {
         const products = await Product.findAll();
@@ -23,7 +21,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Update product
 router.put('/:id', async (req, res) => {
     const { name, description, price, quantity, imageUrl } = req.body;
     try {

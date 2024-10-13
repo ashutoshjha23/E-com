@@ -17,7 +17,6 @@ router.post('/addOrder', async (req, res) => {
 
         const orderId = await Order.create(productId, customerId, quantity, totalPrice);
 
-        // Update the product quantity
         await Product.updateQuantity(productId, product.quantity - quantity);
 
         res.status(201).json({ message: 'Order created successfully', orderId });
