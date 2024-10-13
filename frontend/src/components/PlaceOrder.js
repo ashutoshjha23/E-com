@@ -1,13 +1,13 @@
-// frontend/src/components/PlaceOrder.js
+
 import React, { useState } from 'react';
-import { useCart } from '../context/CartContext'; // Assuming you have a context for the cart
+import { useCart } from '../context/CartContext'; 
 
 const PlaceOrder = ({ product }) => {
-    const { cartItems, clearCart } = useCart(); // Access cart items and clearCart function
-    const [quantity, setQuantity] = useState(1); // Default quantity
-    const [loading, setLoading] = useState(false); // Loading state
-    const [error, setError] = useState(null); // Error state
-    const user = { id: 1 }; // Placeholder for user ID, replace with actual user state
+    const { cartItems, clearCart } = useCart(); 
+    const [quantity, setQuantity] = useState(1); 
+    const [loading, setLoading] = useState(false); 
+    const [error, setError] = useState(null); 
+    const user = { id: 1 }; 
 
     const handlePlaceOrder = async () => {
         const orderData = {
@@ -17,7 +17,7 @@ const PlaceOrder = ({ product }) => {
         };
 
         setLoading(true);
-        setError(null); // Reset error
+        setError(null); 
 
         try {
             const response = await fetch('/api/addOrder', {
@@ -31,15 +31,15 @@ const PlaceOrder = ({ product }) => {
             const result = await response.json();
             if (response.ok) {
                 console.log('Order placed successfully:', result);
-                clearCart(); // Clear the cart after placing an order
+                clearCart();
             } else {
                 throw new Error(result.message || 'Failed to place order');
             }
         } catch (error) {
             console.error('Error placing order:', error);
-            setError(error.message); // Update error state
+            setError(error.message); 
         } finally {
-            setLoading(false); // Reset loading state
+            setLoading(false); 
         }
     };
 
@@ -54,7 +54,7 @@ const PlaceOrder = ({ product }) => {
                     type="number"
                     id="quantity"
                     min="1"
-                    max={product.quantity} // Set maximum to available product quantity
+                    max={product.quantity} 
                     value={quantity}
                     onChange={(e) => setQuantity(Number(e.target.value))}
                 />
@@ -63,7 +63,7 @@ const PlaceOrder = ({ product }) => {
             <button 
                 className="place-order-btn" 
                 onClick={handlePlaceOrder} 
-                disabled={loading || product.quantity < 1} // Disable button if loading or out of stock
+                disabled={loading || product.quantity < 1} 
             >
                 {loading ? 'Placing Order...' : 'Place Order'}
             </button>

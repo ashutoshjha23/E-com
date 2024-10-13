@@ -1,4 +1,4 @@
-// frontend/src/components/ProductCard.js
+
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import './ProductCard.css';
@@ -8,16 +8,12 @@ const ProductCard = ({ product }) => {
     const [quantity, setQuantity] = useState(1);
 
     const handleAddToCart = async () => {
-        // Check if the requested quantity is available
         if (quantity > product.quantity) {
             alert('Not enough quantity available!');
             return;
         }
 
-        // Add product to cart
         addToCart(product, quantity);
-
-        // Deduct quantity in the database
         const newQuantity = product.quantity - quantity;
 
         try {
@@ -33,7 +29,7 @@ const ProductCard = ({ product }) => {
                 throw new Error('Failed to update quantity');
             }
 
-            setQuantity(1); // Reset quantity to 1 after adding to cart
+            setQuantity(1); 
         } catch (error) {
             console.error('Error updating quantity:', error);
         }

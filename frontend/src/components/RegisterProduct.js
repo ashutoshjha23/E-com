@@ -1,4 +1,4 @@
-// frontend/src/components/RegisterProduct.js
+
 import React, { useState } from 'react';
 
 const RegisterProduct = () => {
